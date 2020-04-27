@@ -27,8 +27,7 @@ import co.gov.ids.stationerycontrol.certificate.framework.persistence.repositori
 @Transactional(readOnly = true)
 public class AttachmentServiceImplementation implements IAttachmentService {
 
-    //private final String CERTIFICATES_ATTACHMENTS_PATH = "/home/spring/";
-    private final String CERTIFICATES_ATTACHMENTS_PATH = "D:\\Workspace\\tesis\\data\\";
+    private final String CERTIFICATES_ATTACHMENTS_PATH = "/home/spring/";
 
     private ICertificateRepository repository;
 
