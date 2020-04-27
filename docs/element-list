@@ -1,0 +1,10 @@
+co.gov.ids.stationerycontrol.certificate
+co.gov.ids.stationerycontrol.certificate.application.exceptions
+co.gov.ids.stationerycontrol.certificate.application.services
+co.gov.ids.stationerycontrol.certificate.domain
+co.gov.ids.stationerycontrol.certificate.framework.configuration
+co.gov.ids.stationerycontrol.certificate.framework.configuration.exception
+co.gov.ids.stationerycontrol.certificate.framework.persistence.entities
+co.gov.ids.stationerycontrol.certificate.framework.persistence.mapper
+co.gov.ids.stationerycontrol.certificate.framework.persistence.repositories
+co.gov.ids.stationerycontrol.certificate.framework.resources
