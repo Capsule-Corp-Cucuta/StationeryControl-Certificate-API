@@ -9,7 +9,7 @@ import co.gov.ids.stationerycontrol.certificate.domain.CertificateState;
  * Interface that represents the use cases of Certificates.
  *
  * @author Sergio Rodriguez
- * @version 0.0.1
+ * @version 0.0.2
  * @since 2020
  */
 public interface ICertificateService {
@@ -20,14 +20,14 @@ public interface ICertificateService {
      * @param certificate Certificate to will be created.
      * @return Certificate created.
      */
-    public Certificate create(Certificate certificate);
+    Certificate create(Certificate certificate);
 
     /**
      * Function to create multiple Certificates.
      *
      * @param certificates List of Certificates to will be created.
      */
-    public void createMultiple(List<Certificate> certificates);
+    void createMultiple(List<Certificate> certificates);
 
     /**
      * Function to update a certificate.
@@ -36,7 +36,7 @@ public interface ICertificateService {
      * @param certificate Certificate to will be updated.
      * @return Certificate updated.
      */
-    public Certificate update(int number, Certificate certificate);
+    Certificate update(int number, Certificate certificate);
 
     /**
      * Function to update attendant of a list of Certificates identified between startNumber and endNumber.
@@ -45,7 +45,7 @@ public interface ICertificateService {
      * @param endNumber   end number of certificate to update.
      * @param attendant   new attendant of the Certificates.
      */
-    public void updateAttendantMultipleCertificate(int startNumber, int endNumber, String attendant);
+    void updateMultipleCertificate(int startNumber, int endNumber, String attendant);
 
     /**
      * Function to List all Certificates.
@@ -53,7 +53,7 @@ public interface ICertificateService {
      * @param page number of page to list.
      * @return List of 20 Certificates by page.
      */
-    public List<Certificate> findAll(int page);
+    List<Certificate> findAll(int page);
 
     /**
      * Function to find a Certificate by number.
@@ -61,7 +61,7 @@ public interface ICertificateService {
      * @param number number to identify a Certificate.
      * @return Certificate identified by param.
      */
-    public Certificate findByNumber(int number);
+    Certificate findByNumber(int number);
 
     /**
      * Function to find a list of Certificates identified by numbers between start and end.
@@ -70,45 +70,7 @@ public interface ICertificateService {
      * @param endNumber   end number up to where the certificates will be listed.
      * @return List of 20 Certificates from start to end by page.
      */
-    public List<Certificate> findByNumberBetween(int startNumber, int endNumber);
-
-    /**
-     * Function to find a List of Certificates by Township.
-     *
-     * @param township township where the Certificate are from.
-     * @param page     number of page to list.
-     * @return List of 20 Certificates by page.
-     */
-    public List<Certificate> findByTownship(String township, int page);
-
-    /**
-     * Function to find a List of Certificates by Institution.
-     *
-     * @param institution institution where the Certificates are from.
-     * @param page        number of page to list.
-     * @return List of 20 Certificates by page.
-     */
-    public List<Certificate> findByInstitution(String institution, int page);
-
-    /**
-     * Function to find a List of Certificates by Institution and Type.
-     *
-     * @param institution institution where the Certificates are from.
-     * @param type        type of Certificate.
-     * @param page        number of page to list.
-     * @return List of 20 Certificates by page.
-     */
-    public List<Certificate> findByInstitutionAndType(String institution, CertificateType type, int page);
-
-    /**
-     * Function to find a List of Certificates by Institution and State.
-     *
-     * @param institution institution where the Certificates are from.
-     * @param state       state of Certificate.
-     * @param page        number of page to list.
-     * @return List of 20 Certificates by page.
-     */
-    public List<Certificate> findByInstitutionAndState(String institution, CertificateState state, int page);
+    List<Certificate> findByNumberBetween(int startNumber, int endNumber);
 
     /**
      * Function to find a List of Certificates by type.
@@ -117,7 +79,7 @@ public interface ICertificateService {
      * @param page number of page to list.
      * @return List of 20 Certificates by page.
      */
-    public List<Certificate> findByType(CertificateType type, int page);
+    List<Certificate> findByType(CertificateType type, int page);
 
     /**
      * Function to find a List of Certificates by type and Attendant.
@@ -127,7 +89,17 @@ public interface ICertificateService {
      * @param page      number of page to list.
      * @return List of 20 Certificates by page.
      */
-    public List<Certificate> findByTypeAndAttendant(CertificateType type, String attendant, int page);
+    List<Certificate> findByTypeAndAttendant(CertificateType type, String attendant, int page);
+
+    /**
+     * Function to find a List of Certificates by Institution and Type.
+     *
+     * @param type        type of Certificate.
+     * @param institution institution where the Certificates are from.
+     * @param page        number of page to list.
+     * @return List of 20 Certificates by page.
+     */
+    List<Certificate> findByTypeAndInstitution(CertificateType type, String institution, int page);
 
     /**
      * Function to find a List of Certificates by state.
@@ -136,7 +108,7 @@ public interface ICertificateService {
      * @param page  number of page to list.
      * @return List of 20 Certificates by page.
      */
-    public List<Certificate> findByState(CertificateState state, int page);
+    List<Certificate> findByState(CertificateState state, int page);
 
     /**
      * Function to find a List of Certificates by state and Attendant.
@@ -146,7 +118,17 @@ public interface ICertificateService {
      * @param page      number of page to list.
      * @return List of 20 Certificates by page.
      */
-    public List<Certificate> findByStateAndAttendant(CertificateState state, String attendant, int page);
+    List<Certificate> findByStateAndAttendant(CertificateState state, String attendant, int page);
+
+    /**
+     * Function to find a List of Certificates by Institution and State.
+     *
+     * @param state       state of Certificate.
+     * @param institution institution where the Certificates are from.
+     * @param page        number of page to list.
+     * @return List of 20 Certificates by page.
+     */
+    List<Certificate> findByStateAndInstitution(CertificateState state, String institution, int page);
 
     /**
      * Function to find a list of Certificates by Attendant.
@@ -155,6 +137,24 @@ public interface ICertificateService {
      * @param page      number of page to list.
      * @return List of 20 Certificates by page.
      */
-    public List<Certificate> findByAttendant(String attendant, int page);
+    List<Certificate> findByAttendant(String attendant, int page);
+
+    /**
+     * Function to find a List of Certificates by Township.
+     *
+     * @param township township where the Certificate are from.
+     * @param page     number of page to list.
+     * @return List of 20 Certificates by page.
+     */
+    List<Certificate> findByTownship(String township, int page);
+
+    /**
+     * Function to find a List of Certificates by Institution.
+     *
+     * @param institution institution where the Certificates are from.
+     * @param page        number of page to list.
+     * @return List of 20 Certificates by page.
+     */
+    List<Certificate> findByInstitution(String institution, int page);
 
 }

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.FileException;
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.NotFoundException;
@@ -20,16 +21,17 @@ import co.gov.ids.stationerycontrol.certificate.framework.persistence.repositori
  * Class that implements ICertificateService.
  *
  * @author Sergio Rodriguez
- * @version 0.0.1
+ * @version 0.0.2
  * @since 2020
  */
 @Service
 @Transactional(readOnly = true)
 public class AttachmentServiceImplementation implements IAttachmentService {
 
-    private final String CERTIFICATES_ATTACHMENTS_PATH = "/home/spring/";
+    private final ICertificateRepository repository;
 
-    private ICertificateRepository repository;
+    @Value("${certificate.attachment.path}")
+    private String CERTIFICATE_ATTACHMENT_PATH;
 
     public AttachmentServiceImplementation(ICertificateRepository repository) {
         this.repository = repository;
@@ -48,7 +50,7 @@ public class AttachmentServiceImplementation implements IAttachmentService {
         if (entity == null) {
             throw new NotFoundException("Not found");
         }
-        if (file.isEmpty()) {    // Verify if the file is not empty
+        if (file == null || file.isEmpty()) {    // Verify if the file is not empty
             throw new FileException("Failed to write the file in server");
         }
         if (entity.getAttachment() != null && !entity.getAttachment().isEmpty()) {   // Verify if the certificate has an older attachment
@@ -65,10 +67,10 @@ public class AttachmentServiceImplementation implements IAttachmentService {
             String fileName = entity.getNumber() + "-attachment-" + dateName + "." + file.getContentType().split("/")[1];   // Write the file name
 
             byte[] bytes = file.getBytes();
-            Path path = Paths.get(CERTIFICATES_ATTACHMENTS_PATH + fileName);
+            Path path = Paths.get(CERTIFICATE_ATTACHMENT_PATH + fileName);
             Files.write(path, bytes);   // Save the file in the respective folder and with the respective name
 
-            entity.setAttachment(CERTIFICATES_ATTACHMENTS_PATH + fileName); // Set the file path to the certificate
+            entity.setAttachment(CERTIFICATE_ATTACHMENT_PATH + fileName); // Set the file path to the certificate
             repository.save(entity);    // Update the certificate
         } catch (Exception e) {
             e.printStackTrace();

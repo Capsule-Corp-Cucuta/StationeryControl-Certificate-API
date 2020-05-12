@@ -1,6 +1,7 @@
 package co.gov.ids.stationerycontrol.certificate.framework.resources;
 
 import java.util.List;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -17,7 +18,7 @@ import co.gov.ids.stationerycontrol.certificate.application.services.ICertificat
  * Class to represents the web service of certificates.
  *
  * @author Sergio Rodriguez
- * @version 0.0.1
+ * @version 0.0.2
  * @since 2020
  */
 @RestController
@@ -92,7 +93,7 @@ public class CertificateResource {
     public ResponseEntity updateMultiple(@PathVariable("startNumber") int startNumber,
                                          @PathVariable("endNumber") int endNumber,
                                          @PathVariable("attendant") String attendant) {
-        service.updateAttendantMultipleCertificate(startNumber, endNumber, attendant);
+        service.updateMultipleCertificate(startNumber, endNumber, attendant);
         return new ResponseEntity(HttpStatus.OK);
     }
 
@@ -142,78 +143,6 @@ public class CertificateResource {
     }
 
     /**
-     * GET Method to list Certificates by township.
-     *
-     * @param township township where Certificates are from.
-     * @param page     page to consult.
-     * @return List of Certificates, code 200.
-     */
-    @GetMapping("/township/{township}/{page}")
-    @ApiOperation(value = "Get a list of Certificates by township",
-            notes = "Service for get a list of Certificates by township")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
-            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
-    public ResponseEntity<List<Certificate>> findByTownship(@PathVariable("township") String township,
-                                                            @PathVariable("page") int page) {
-        return new ResponseEntity<>(service.findByTownship(township, page), HttpStatus.OK);
-    }
-
-    /**
-     * GET Method to list Certificates by Institution.
-     *
-     * @param institution institution where Certificates are from.
-     * @param page        page to consult.
-     * @return List of Certificates, code 200.
-     */
-    @GetMapping("/institution/{institution}/{page}")
-    @ApiOperation(value = "Get a list of certificates by institution",
-            notes = "Service for get a list of Certificates by institution")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
-            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
-    public ResponseEntity<List<Certificate>> findByInstitution(@PathVariable("institution") String institution,
-                                                               @PathVariable("page") int page) {
-        return new ResponseEntity<>(service.findByInstitution(institution, page), HttpStatus.OK);
-    }
-
-    /**
-     * GET Method to list Certificates by Institution and Type of Certificate.
-     *
-     * @param institution institution where Certificates are from.
-     * @param type        type of Certificate.
-     * @param page        page to consult.
-     * @return List of Certificates, code 200.
-     */
-    @GetMapping("/institution/{institution}/type/{type}/{page}")
-    @ApiOperation(value = "Get a list of Certificates by institution and type",
-            notes = "Service for get a list of Certificates by institution and type of Certificate")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
-            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
-    public ResponseEntity<List<Certificate>> findByInstitutionAndType(@PathVariable("institution") String institution,
-                                                                      @PathVariable("type") CertificateType type,
-                                                                      @PathVariable("page") int page) {
-        return new ResponseEntity<>(service.findByInstitutionAndType(institution, type, page), HttpStatus.OK);
-    }
-
-    /**
-     * GET Method to list Certificates by Institution and State of Certificate.
-     *
-     * @param institution institution where Certificates are from.
-     * @param state       state of Certificates.
-     * @param page        page to consult.
-     * @return List of Certificates, code 200.
-     */
-    @GetMapping("/institution/{institution}/state/{state}/{page}")
-    @ApiOperation(value = "Get a list of Certificates by institution and state",
-            notes = "Service for get a list of Certificates by institution and state of Certificate")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
-            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
-    public ResponseEntity<List<Certificate>> findByInstitutionAndState(@PathVariable("institution") String institution,
-                                                                       @PathVariable("state") CertificateState state,
-                                                                       @PathVariable("page") int page) {
-        return new ResponseEntity<>(service.findByInstitutionAndState(institution, state, page), HttpStatus.OK);
-    }
-
-    /**
      * GET Method to list Certificates by Type.
      *
      * @param type type of Certificate.
@@ -242,10 +171,29 @@ public class CertificateResource {
             notes = "Service for get a list of Certificates by type and attendant")
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
             @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
-    public ResponseEntity<List<Certificate>> findByTypeAndAttendant(@PathVariable("type") CertificateType type,
-                                                                    @PathVariable("attendant") String attendant,
+    public ResponseEntity<List<Certificate>> findByTypeAndAttendant(@PathVariable("attendant") String attendant,
+                                                                    @PathVariable("type") CertificateType type,
                                                                     @PathVariable("page") int page) {
         return new ResponseEntity<>(service.findByTypeAndAttendant(type, attendant, page), HttpStatus.OK);
+    }
+
+    /**
+     * GET Method to list Certificates by Institution and Type of Certificate.
+     *
+     * @param institution institution where Certificates are from.
+     * @param type        type of Certificate.
+     * @param page        page to consult.
+     * @return List of Certificates, code 200.
+     */
+    @GetMapping("/type/{type}/institution/{institution}/{page}")
+    @ApiOperation(value = "Get a list of Certificates by institution and type",
+            notes = "Service for get a list of Certificates by institution and type of Certificate")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
+            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
+    public ResponseEntity<List<Certificate>> findByInstitutionAndType(@PathVariable("institution") String institution,
+                                                                      @PathVariable("type") CertificateType type,
+                                                                      @PathVariable("page") int page) {
+        return new ResponseEntity<>(service.findByTypeAndInstitution(type, institution, page), HttpStatus.OK);
     }
 
     /**
@@ -284,6 +232,25 @@ public class CertificateResource {
     }
 
     /**
+     * GET Method to list Certificates by Institution and State of Certificate.
+     *
+     * @param institution institution where Certificates are from.
+     * @param state       state of Certificates.
+     * @param page        page to consult.
+     * @return List of Certificates, code 200.
+     */
+    @GetMapping("/state/{state}/institution/{institution}/{page}")
+    @ApiOperation(value = "Get a list of Certificates by institution and state",
+            notes = "Service for get a list of Certificates by institution and state of Certificate")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
+            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
+    public ResponseEntity<List<Certificate>> findByInstitutionAndState(@PathVariable("state") CertificateState state,
+                                                                       @PathVariable("institution") String institution,
+                                                                       @PathVariable("page") int page) {
+        return new ResponseEntity<>(service.findByStateAndInstitution(state, institution, page), HttpStatus.OK);
+    }
+
+    /**
      * GET Method to list Certificates by attendant.
      *
      * @param attendant User responsible of Certificates.
@@ -298,6 +265,40 @@ public class CertificateResource {
     public ResponseEntity<List<Certificate>> findByAttendant(@PathVariable("attendant") String attendant,
                                                              @PathVariable("page") int page) {
         return new ResponseEntity<>(service.findByAttendant(attendant, page), HttpStatus.OK);
+    }
+
+    /**
+     * GET Method to list Certificates by township.
+     *
+     * @param township township where Certificates are from.
+     * @param page     page to consult.
+     * @return List of Certificates, code 200.
+     */
+    @GetMapping("/township/{township}/{page}")
+    @ApiOperation(value = "Get a list of Certificates by township",
+            notes = "Service for get a list of Certificates by township")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
+            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
+    public ResponseEntity<List<Certificate>> findByTownship(@PathVariable("township") String township,
+                                                            @PathVariable("page") int page) {
+        return new ResponseEntity<>(service.findByTownship(township, page), HttpStatus.OK);
+    }
+
+    /**
+     * GET Method to list Certificates by Institution.
+     *
+     * @param institution institution where Certificates are from.
+     * @param page        page to consult.
+     * @return List of Certificates, code 200.
+     */
+    @GetMapping("/institution/{institution}/{page}")
+    @ApiOperation(value = "Get a list of certificates by institution",
+            notes = "Service for get a list of Certificates by institution")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates were listed successfully"),
+            @ApiResponse(code = 400, message = "Invalid request"), @ApiResponse(code = 404, message = "Not found")})
+    public ResponseEntity<List<Certificate>> findByInstitution(@PathVariable("institution") String institution,
+                                                               @PathVariable("page") int page) {
+        return new ResponseEntity<>(service.findByInstitution(institution, page), HttpStatus.OK);
     }
 
 }

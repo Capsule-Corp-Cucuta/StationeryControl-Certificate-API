@@ -12,7 +12,7 @@ import co.gov.ids.stationerycontrol.certificate.framework.persistence.entities.C
  * Interface that define the available operations to DB.
  *
  * @author Sergio Rodriguez
- * @version 0.0.1
+ * @version 0.0.2
  * @since 2020
  */
 public interface ICertificateRepository extends JpaRepository<CertificateEntity, Long> {
@@ -23,7 +23,7 @@ public interface ICertificateRepository extends JpaRepository<CertificateEntity,
      * @param number number to identify the Certificate.
      * @return Certificate identified by number.
      */
-    public CertificateEntity findByNumber(int number);
+    CertificateEntity findByNumber(int number);
 
     /**
      * Function to list Certificates by startNumber and endNumber.
@@ -32,45 +32,7 @@ public interface ICertificateRepository extends JpaRepository<CertificateEntity,
      * @param endNumber   number to identify the Certificate, the last one to consult.
      * @return List of Certificates between startNumber and endNumber.
      */
-    public List<CertificateEntity> findByNumberBetween(int startNumber, int endNumber);
-
-    /**
-     * Function to list Certificates by township.
-     *
-     * @param township township where Certificates are from.
-     * @param page     page to consult.
-     * @return List of Certificates by page.
-     */
-    public Page<CertificateEntity> findByTownship(String township, Pageable page);
-
-    /**
-     * Function to list Certificates by Institution.
-     *
-     * @param institution institution where Certificates are from.
-     * @param page        page to consult.
-     * @return List of Certificates by page.
-     */
-    public Page<CertificateEntity> findByInstitution(String institution, Pageable page);
-
-    /**
-     * Function to list Certificates by Institution and Type.
-     *
-     * @param institution institution where Certificates are from.
-     * @param type        type of Certificate.
-     * @param page        page to consult.
-     * @return List of Certificates by page.
-     */
-    public Page<CertificateEntity> findByInstitutionAndType(String institution, CertificateType type, Pageable page);
-
-    /**
-     * Function to list Certificates by Institution and State.
-     *
-     * @param institution institution where Certificates are from.
-     * @param state       state pf Certificate.
-     * @param page        page to consult.
-     * @return List of Certificates by page.
-     */
-    public Page<CertificateEntity> findByInstitutionAndState(String institution, CertificateState state, Pageable page);
+    List<CertificateEntity> findByNumberBetween(int startNumber, int endNumber);
 
     /**
      * Function to list Certificates by Type of Certificate.
@@ -79,7 +41,7 @@ public interface ICertificateRepository extends JpaRepository<CertificateEntity,
      * @param page page to consult.
      * @return List of Certificates by page.
      */
-    public Page<CertificateEntity> findByType(CertificateType type, Pageable page);
+    Page<CertificateEntity> findByType(CertificateType type, Pageable page);
 
     /**
      * Function to list Certificates by Type and Attendant.
@@ -89,7 +51,17 @@ public interface ICertificateRepository extends JpaRepository<CertificateEntity,
      * @param page      page to consult.
      * @return List of Certificates by page.
      */
-    public Page<CertificateEntity> findByTypeAndAttendant(CertificateType type, String attendant, Pageable page);
+    Page<CertificateEntity> findByTypeAndAttendant(CertificateType type, String attendant, Pageable page);
+
+    /**
+     * Function to list Certificates by Institution and Type.
+     *
+     * @param institution institution where Certificates are from.
+     * @param type        type of Certificate.
+     * @param page        page to consult.
+     * @return List of Certificates by page.
+     */
+    Page<CertificateEntity> findByTypeAndInstitution(CertificateType type, String institution, Pageable page);
 
     /**
      * Function to list Certificates by State.
@@ -98,7 +70,7 @@ public interface ICertificateRepository extends JpaRepository<CertificateEntity,
      * @param page  page to consult.
      * @return List of Certificates by page.
      */
-    public Page<CertificateEntity> findByState(CertificateState state, Pageable page);
+    Page<CertificateEntity> findByState(CertificateState state, Pageable page);
 
     /**
      * Function to list Certificates by State and Attendant.
@@ -108,7 +80,17 @@ public interface ICertificateRepository extends JpaRepository<CertificateEntity,
      * @param page      page to consult.
      * @return List of Certificates by page.
      */
-    public Page<CertificateEntity> findByStateAndAttendant(CertificateState state, String attendant, Pageable page);
+    Page<CertificateEntity> findByStateAndAttendant(CertificateState state, String attendant, Pageable page);
+
+    /**
+     * Function to list Certificates by Institution and State.
+     *
+     * @param institution institution where Certificates are from.
+     * @param state       state pf Certificate.
+     * @param page        page to consult.
+     * @return List of Certificates by page.
+     */
+    Page<CertificateEntity> findByStateAndInstitution(CertificateState state, String institution, Pageable page);
 
     /**
      * Function to list Certificates by Attendant.
@@ -117,6 +99,24 @@ public interface ICertificateRepository extends JpaRepository<CertificateEntity,
      * @param page      page to consult.
      * @return List of Certificates by page.
      */
-    public Page<CertificateEntity> findByAttendant(String attendant, Pageable page);
+    Page<CertificateEntity> findByAttendant(String attendant, Pageable page);
+
+    /**
+     * Function to list Certificates by township.
+     *
+     * @param township township where Certificates are from.
+     * @param page     page to consult.
+     * @return List of Certificates by page.
+     */
+    Page<CertificateEntity> findByTownship(String township, Pageable page);
+
+    /**
+     * Function to list Certificates by Institution.
+     *
+     * @param institution institution where Certificates are from.
+     * @param page        page to consult.
+     * @return List of Certificates by page.
+     */
+    Page<CertificateEntity> findByInstitution(String institution, Pageable page);
 
 }

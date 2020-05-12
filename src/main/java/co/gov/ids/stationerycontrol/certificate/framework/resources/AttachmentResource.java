@@ -15,7 +15,7 @@ import co.gov.ids.stationerycontrol.certificate.application.services.IAttachment
  * Class to represents the web service of attachments from certificates.
  *
  * @author Sergio Rodriguez
- * @version 0.0.1
+ * @version 0.0.2
  * @since 2020
  */
 @RestController
@@ -23,7 +23,7 @@ import co.gov.ids.stationerycontrol.certificate.application.services.IAttachment
 @RequestMapping("/api/certificate/{number}/attachment")
 public class AttachmentResource {
 
-    private IAttachmentService service;
+    private final IAttachmentService service;
 
     public AttachmentResource(IAttachmentService service) {
         this.service = service;

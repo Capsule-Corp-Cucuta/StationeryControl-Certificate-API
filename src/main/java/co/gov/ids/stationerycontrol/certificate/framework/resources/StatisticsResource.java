@@ -26,7 +26,7 @@ import co.gov.ids.stationerycontrol.certificate.application.services.IStatistics
 @RequestMapping("/api/certificate/count")
 public class StatisticsResource {
 
-    private IStatisticsService service;
+    private final IStatisticsService service;
 
     public StatisticsResource(IStatisticsService service) {
         this.service = service;
@@ -42,70 +42,6 @@ public class StatisticsResource {
     @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully")})
     public ResponseEntity<Long> countAll() {
         return new ResponseEntity<>(service.countAll(), HttpStatus.OK);
-    }
-
-    /**
-     * GET Method to count Certificates by township.
-     *
-     * @param township township where Certificates are from.
-     * @return number of Certificates by township.
-     */
-    @GetMapping("/township/{township}")
-    @ApiOperation(value = "Count certificates by township",
-            notes = "Service for get the total number of certificates sorted by township")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
-            @ApiResponse(code = 400, message = "Invalid request")})
-    public ResponseEntity<Long> countByTownship(@PathVariable("township") String township) {
-        return new ResponseEntity<>(service.countByTownship(township), HttpStatus.OK);
-    }
-
-    /**
-     * GET Method to count Certificates by institution.
-     *
-     * @param institution institution where Certificates are from.
-     * @return number of Certificates by institution.
-     */
-    @GetMapping("/institution/{institution}")
-    @ApiOperation(value = "Count certificates by institution",
-            notes = "Service for get the total number of certificates sorted by institution")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
-            @ApiResponse(code = 400, message = "Invalid request")})
-    public ResponseEntity<Long> countByInstitution(@PathVariable("institution") String institution) {
-        return new ResponseEntity<>(service.countByInstitution(institution), HttpStatus.OK);
-    }
-
-    /**
-     * GET Method to count Certificates by institution and Certificate type.
-     *
-     * @param institution institution where Certificates are from.
-     * @param type        type of Certificates.
-     * @return number of Certificates by institution and Certificate type.
-     */
-    @GetMapping("/institution/{institution}/type/{type}")
-    @ApiOperation(value = "Count certificates by institution and certificate type",
-            notes = "Service for get the total number of certificates sorted by institution and type")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
-            @ApiResponse(code = 400, message = "Invalid request")})
-    public ResponseEntity<Long> countByInstitutionAndType(@PathVariable("institution") String institution,
-                                                          @PathVariable("type") CertificateType type) {
-        return new ResponseEntity<>(service.countByInstitutionAndType(institution, type), HttpStatus.OK);
-    }
-
-    /**
-     * GET Method to count Certificates by institution and Certificates state.
-     *
-     * @param institution institution where Certificates are from.
-     * @param state       state of Certificates.
-     * @return number of Certificates by institution and Certificate state.
-     */
-    @GetMapping("/institution/{institution}/state/{state}")
-    @ApiOperation(value = "Count certificates by institution and certificate state",
-            notes = "Service fo get the total number of certificates sorted by institution and type")
-    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
-            @ApiResponse(code = 400, message = "Invalid request")})
-    public ResponseEntity<Long> countByInstitutionAndState(@PathVariable("institution") String institution,
-                                                           @PathVariable("state") CertificateState state) {
-        return new ResponseEntity<>(service.countByInstitutionAndState(institution, state), HttpStatus.OK);
     }
 
     /**
@@ -141,6 +77,23 @@ public class StatisticsResource {
     }
 
     /**
+     * GET Method to count Certificates by institution and Certificate type.
+     *
+     * @param type        type of Certificates.
+     * @param institution institution where Certificates are from.
+     * @return number of Certificates by institution and Certificate type.
+     */
+    @GetMapping("/type/{type}/institution/{institution}")
+    @ApiOperation(value = "Count certificates by institution and certificate type",
+            notes = "Service for get the total number of certificates sorted by institution and type")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
+            @ApiResponse(code = 400, message = "Invalid request")})
+    public ResponseEntity<Long> countByInstitutionAndType(@PathVariable("type") CertificateType type,
+                                                          @PathVariable("institution") String institution) {
+        return new ResponseEntity<>(service.countByTypeAndInstitution(type, institution), HttpStatus.OK);
+    }
+
+    /**
      * GET Method to count Certificates by Certificate state.
      *
      * @param state state of Certificates.
@@ -173,6 +126,23 @@ public class StatisticsResource {
     }
 
     /**
+     * GET Method to count Certificates by institution and Certificates state.
+     *
+     * @param state       state of Certificates.
+     * @param institution institution where Certificates are from.
+     * @return number of Certificates by institution and Certificate state.
+     */
+    @GetMapping("/state/{state}/institution/{institution}")
+    @ApiOperation(value = "Count certificates by institution and certificate state",
+            notes = "Service fo get the total number of certificates sorted by institution and type")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
+            @ApiResponse(code = 400, message = "Invalid request")})
+    public ResponseEntity<Long> countByStateAndInstitution(@PathVariable("state") CertificateState state,
+                                                           @PathVariable("institution") String institution) {
+        return new ResponseEntity<>(service.countByStateAndInstitution(state, institution), HttpStatus.OK);
+    }
+
+    /**
      * GET Method to count Certificates by attendant.
      *
      * @param attendant User responsible of the Certificates.
@@ -185,6 +155,36 @@ public class StatisticsResource {
             @ApiResponse(code = 400, message = "Invalid request")})
     public ResponseEntity<Long> countByAttendant(@PathVariable("attendant") String attendant) {
         return new ResponseEntity<>(service.countByAttendant(attendant), HttpStatus.OK);
+    }
+
+    /**
+     * GET Method to count Certificates by township.
+     *
+     * @param township township where Certificates are from.
+     * @return number of Certificates by township.
+     */
+    @GetMapping("/township/{township}")
+    @ApiOperation(value = "Count certificates by township",
+            notes = "Service for get the total number of certificates sorted by township")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
+            @ApiResponse(code = 400, message = "Invalid request")})
+    public ResponseEntity<Long> countByTownship(@PathVariable("township") String township) {
+        return new ResponseEntity<>(service.countByTownship(township), HttpStatus.OK);
+    }
+
+    /**
+     * GET Method to count Certificates by institution.
+     *
+     * @param institution institution where Certificates are from.
+     * @return number of Certificates by institution.
+     */
+    @GetMapping("/institution/{institution}")
+    @ApiOperation(value = "Count certificates by institution",
+            notes = "Service for get the total number of certificates sorted by institution")
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Certificates counted successfully"),
+            @ApiResponse(code = 400, message = "Invalid request")})
+    public ResponseEntity<Long> countByInstitution(@PathVariable("institution") String institution) {
+        return new ResponseEntity<>(service.countByInstitution(institution), HttpStatus.OK);
     }
 
 }

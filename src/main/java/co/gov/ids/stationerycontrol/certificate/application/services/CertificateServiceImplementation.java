@@ -27,8 +27,7 @@ import co.gov.ids.stationerycontrol.certificate.framework.persistence.repositori
 public class CertificateServiceImplementation implements ICertificateService {
 
     private final int SIZE_PAGE = 20;
-
-    private ICertificateRepository repository;
+    private final ICertificateRepository repository;
 
     public CertificateServiceImplementation(ICertificateRepository repository) {
         this.repository = repository;
@@ -114,9 +113,10 @@ public class CertificateServiceImplementation implements ICertificateService {
      */
     @Override
     @Transactional
-    public void updateAttendantMultipleCertificate(int startNumber, int endNumber, String attendant) {
+    public void updateMultipleCertificate(int startNumber, int endNumber, String attendant) {
         if (startNumber <= 0 || endNumber <= startNumber) {
-            throw new BadRequestException("EndNumber should be bigger than StartNumber and StartNumber should be bigger than zero");
+            throw new BadRequestException("EndNumber should be bigger than StartNumber " +
+                    "and StartNumber should be bigger than zero");
         }
         if (attendant.isEmpty()) {
             throw new BadRequestException("Field attendant could not be empty");
@@ -124,6 +124,9 @@ public class CertificateServiceImplementation implements ICertificateService {
         List<CertificateEntity> entities = repository.findByNumberBetween(startNumber, endNumber);
         for (CertificateEntity entity : entities) {
             entity.setAttendant(attendant);
+            if (entity.getState().equals(CertificateState.IDLE)) {
+                entity.setState(CertificateState.ASSIGNED);
+            }
         }
         repository.saveAll(entities);
     }
@@ -170,98 +173,11 @@ public class CertificateServiceImplementation implements ICertificateService {
     @Transactional
     public List<Certificate> findByNumberBetween(int startNumber, int endNumber) {
         if (startNumber <= 0 || endNumber <= startNumber) {
-            throw new BadRequestException("EndNumber should be bigger than StartNumber and StartNumber should be bigger than zero");
+            throw new BadRequestException("EndNumber should be bigger than StartNumber " +
+                    "and StartNumber should be bigger than zero");
         }
         List<Certificate> certificates = new ArrayList<>();
         for (CertificateEntity entity : repository.findByNumberBetween(startNumber, endNumber)) {
-            certificates.add(CertificateMapper.toDomain(entity));
-        }
-        if (certificates.isEmpty()) {
-            throw new NotFoundException("Not found");
-        }
-        return certificates;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public List<Certificate> findByTownship(String township, int page) {
-        if (page < 0) {
-            throw new BadRequestException("Field page should be bigger than zero");
-        }
-        if (township.isEmpty()) {
-            throw new BadRequestException("Township field should not be empty");
-        }
-        List<Certificate> certificates = new ArrayList<>();
-        for (CertificateEntity entity : repository.findByTownship(township, PageRequest.of(page, SIZE_PAGE)).getContent()) {
-            certificates.add(CertificateMapper.toDomain(entity));
-        }
-        if (certificates.isEmpty()) {
-            throw new NotFoundException("Not found");
-        }
-        return certificates;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public List<Certificate> findByInstitution(String institution, int page) {
-        if (page < 0) {
-            throw new BadRequestException("Field page should be bigger than zero");
-        }
-        if (institution.isEmpty()) {
-            throw new BadRequestException("Institution field should not be empty");
-        }
-        List<Certificate> certificates = new ArrayList<>();
-        for (CertificateEntity entity : repository.findByInstitution(institution, PageRequest.of(page, SIZE_PAGE)).getContent()) {
-            certificates.add(CertificateMapper.toDomain(entity));
-        }
-        if (certificates.isEmpty()) {
-            throw new NotFoundException("Not found");
-        }
-        return certificates;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public List<Certificate> findByInstitutionAndType(String institution, CertificateType type, int page) {
-        if (page < 0) {
-            throw new BadRequestException("Field page should be bigger than zero");
-        }
-        if (institution.isEmpty()) {
-            throw new BadRequestException("Fields should not be empty");
-        }
-        List<Certificate> certificates = new ArrayList<>();
-        for (CertificateEntity entity : repository.findByInstitutionAndType(institution, type, PageRequest.of(page, SIZE_PAGE)).getContent()) {
-            certificates.add(CertificateMapper.toDomain(entity));
-        }
-        if (certificates.isEmpty()) {
-            throw new NotFoundException("Not found");
-        }
-        return certificates;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public List<Certificate> findByInstitutionAndState(String institution, CertificateState state, int page) {
-        if (page < 0) {
-            throw new BadRequestException("Field page should be bigger than zero");
-        }
-        if (institution.isEmpty()) {
-            throw new BadRequestException("Fields should not be empty");
-        }
-        List<Certificate> certificates = new ArrayList<>();
-        for (CertificateEntity entity : repository.findByInstitutionAndState(institution, state, PageRequest.of(page, SIZE_PAGE)).getContent()) {
             certificates.add(CertificateMapper.toDomain(entity));
         }
         if (certificates.isEmpty()) {
@@ -302,7 +218,31 @@ public class CertificateServiceImplementation implements ICertificateService {
             throw new BadRequestException("Fields should not be empty");
         }
         List<Certificate> certificates = new ArrayList<>();
-        for (CertificateEntity entity : repository.findByTypeAndAttendant(type, attendant, PageRequest.of(page, SIZE_PAGE)).getContent()) {
+        for (CertificateEntity entity : repository.findByTypeAndAttendant(type, attendant,
+                PageRequest.of(page, SIZE_PAGE)).getContent()) {
+            certificates.add(CertificateMapper.toDomain(entity));
+        }
+        if (certificates.isEmpty()) {
+            throw new NotFoundException("Not found");
+        }
+        return certificates;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public List<Certificate> findByTypeAndInstitution(CertificateType type, String institution, int page) {
+        if (page < 0) {
+            throw new BadRequestException("Field page should be bigger than zero");
+        }
+        if (institution.isEmpty()) {
+            throw new BadRequestException("Fields should not be empty");
+        }
+        List<Certificate> certificates = new ArrayList<>();
+        for (CertificateEntity entity : repository.findByTypeAndInstitution(type, institution,
+                PageRequest.of(page, SIZE_PAGE)).getContent()) {
             certificates.add(CertificateMapper.toDomain(entity));
         }
         if (certificates.isEmpty()) {
@@ -343,7 +283,31 @@ public class CertificateServiceImplementation implements ICertificateService {
             throw new BadRequestException("Fields should not be empty");
         }
         List<Certificate> certificates = new ArrayList<>();
-        for (CertificateEntity entity : repository.findByStateAndAttendant(state, attendant, PageRequest.of(page, SIZE_PAGE)).getContent()) {
+        for (CertificateEntity entity : repository.findByStateAndAttendant(state, attendant,
+                PageRequest.of(page, SIZE_PAGE)).getContent()) {
+            certificates.add(CertificateMapper.toDomain(entity));
+        }
+        if (certificates.isEmpty()) {
+            throw new NotFoundException("Not found");
+        }
+        return certificates;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public List<Certificate> findByStateAndInstitution(CertificateState state, String institution, int page) {
+        if (page < 0) {
+            throw new BadRequestException("Field page should be bigger than zero");
+        }
+        if (institution.isEmpty()) {
+            throw new BadRequestException("Fields should not be empty");
+        }
+        List<Certificate> certificates = new ArrayList<>();
+        for (CertificateEntity entity : repository.findByStateAndInstitution(state, institution,
+                PageRequest.of(page, SIZE_PAGE)).getContent()) {
             certificates.add(CertificateMapper.toDomain(entity));
         }
         if (certificates.isEmpty()) {
@@ -365,7 +329,54 @@ public class CertificateServiceImplementation implements ICertificateService {
             throw new BadRequestException("Fields should not be empty");
         }
         List<Certificate> certificates = new ArrayList<>();
-        for (CertificateEntity entity : repository.findByAttendant(attendant, PageRequest.of(page, SIZE_PAGE)).getContent()) {
+        for (CertificateEntity entity : repository.findByAttendant(attendant,
+                PageRequest.of(page, SIZE_PAGE)).getContent()) {
+            certificates.add(CertificateMapper.toDomain(entity));
+        }
+        if (certificates.isEmpty()) {
+            throw new NotFoundException("Not found");
+        }
+        return certificates;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public List<Certificate> findByTownship(String township, int page) {
+        if (page < 0) {
+            throw new BadRequestException("Field page should be bigger than zero");
+        }
+        if (township.isEmpty()) {
+            throw new BadRequestException("Township field should not be empty");
+        }
+        List<Certificate> certificates = new ArrayList<>();
+        for (CertificateEntity entity : repository.findByTownship(township,
+                PageRequest.of(page, SIZE_PAGE)).getContent()) {
+            certificates.add(CertificateMapper.toDomain(entity));
+        }
+        if (certificates.isEmpty()) {
+            throw new NotFoundException("Not found");
+        }
+        return certificates;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public List<Certificate> findByInstitution(String institution, int page) {
+        if (page < 0) {
+            throw new BadRequestException("Field page should be bigger than zero");
+        }
+        if (institution.isEmpty()) {
+            throw new BadRequestException("Institution field should not be empty");
+        }
+        List<Certificate> certificates = new ArrayList<>();
+        for (CertificateEntity entity : repository.findByInstitution(institution,
+                PageRequest.of(page, SIZE_PAGE)).getContent()) {
             certificates.add(CertificateMapper.toDomain(entity));
         }
         if (certificates.isEmpty()) {

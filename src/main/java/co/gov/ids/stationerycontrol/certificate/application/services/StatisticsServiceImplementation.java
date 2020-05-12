@@ -18,7 +18,7 @@ import co.gov.ids.stationerycontrol.certificate.framework.persistence.repositori
 @Transactional(readOnly = true)
 public class StatisticsServiceImplementation implements IStatisticsService {
 
-    private IStatisticsRepository repository;
+    private final IStatisticsRepository repository;
 
     public StatisticsServiceImplementation(IStatisticsRepository repository) {
         this.repository = repository;
@@ -31,54 +31,6 @@ public class StatisticsServiceImplementation implements IStatisticsService {
     @Transactional
     public long countAll() {
         return repository.count();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public long countByTownship(String township) {
-        if (township.isEmpty()) {
-            throw new BadRequestException("Township field should not be empty");
-        }
-        return repository.countByTownship(township);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public long countByInstitution(String institution) {
-        if (institution.isEmpty()) {
-            throw new BadRequestException("Institution field should not be empty");
-        }
-        return repository.countByInstitution(institution);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public long countByInstitutionAndType(String institution, CertificateType type) {
-        if (institution.isEmpty()) {
-            throw new BadRequestException("Fields should not be empty");
-        }
-        return repository.countByInstitutionAndType(institution, type);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    @Transactional
-    public long countByInstitutionAndState(String institution, CertificateState state) {
-        if (institution.isEmpty()) {
-            throw new BadRequestException("Fields should not be empty");
-        }
-        return repository.countByInstitutionAndState(institution, state);
     }
 
     /**
@@ -107,6 +59,18 @@ public class StatisticsServiceImplementation implements IStatisticsService {
      */
     @Override
     @Transactional
+    public long countByTypeAndInstitution(CertificateType type, String institution) {
+        if (institution.isEmpty()) {
+            throw new BadRequestException("Fields should not be empty");
+        }
+        return repository.countByTypeAndInstitution(type, institution);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     public long countByState(CertificateState state) {
         return repository.countByState(state);
     }
@@ -128,11 +92,47 @@ public class StatisticsServiceImplementation implements IStatisticsService {
      */
     @Override
     @Transactional
+    public long countByStateAndInstitution(CertificateState state, String institution) {
+        if (institution.isEmpty()) {
+            throw new BadRequestException("Fields should not be empty");
+        }
+        return repository.countByStateAndInstitution(state, institution);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
     public long countByAttendant(String attendant) {
         if (attendant.isEmpty()) {
             throw new BadRequestException("Fields should not be empty");
         }
         return repository.countByAttendant(attendant);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public long countByTownship(String township) {
+        if (township.isEmpty()) {
+            throw new BadRequestException("Township field should not be empty");
+        }
+        return repository.countByTownship(township);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    @Transactional
+    public long countByInstitution(String institution) {
+        if (institution.isEmpty()) {
+            throw new BadRequestException("Institution field should not be empty");
+        }
+        return repository.countByInstitution(institution);
     }
 
 }
