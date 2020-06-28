@@ -6,14 +6,15 @@ import java.util.ArrayList;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.transaction.annotation.Transactional;
+
 import co.gov.ids.stationerycontrol.certificate.domain.Certificate;
 import co.gov.ids.stationerycontrol.certificate.domain.CertificateType;
 import co.gov.ids.stationerycontrol.certificate.domain.CertificateState;
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.NotFoundException;
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.BadRequestException;
-import co.gov.ids.stationerycontrol.certificate.framework.persistence.mapper.CertificateMapper;
-import co.gov.ids.stationerycontrol.certificate.framework.persistence.entities.CertificateEntity;
-import co.gov.ids.stationerycontrol.certificate.framework.persistence.repositories.ICertificateRepository;
+import co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.mapper.CertificateMapper;
+import co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities.CertificateEntity;
+import co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.repositories.ICertificateRepository;
 
 /**
  * Class that implements ICertificateService.

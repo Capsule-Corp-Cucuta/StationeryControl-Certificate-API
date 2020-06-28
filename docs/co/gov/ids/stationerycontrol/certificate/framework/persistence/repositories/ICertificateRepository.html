@@ -116,7 +116,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <!-- ======== START OF CLASS DATA ======== -->
 <main role="main">
 <div class="header">
-<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">co.gov.ids.stationerycontrol.certificate.framework.persistence.repositories</a></div>
+<div class="subTitle"><span class="packageLabelInType">Package</span>&nbsp;<a href="package-summary.html">co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.repositories</a></div>
 <h2 title="Interface ICertificateRepository" class="title">Interface ICertificateRepository</h2>
 </div>
 <div class="contentContainer">
@@ -125,11 +125,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="blockList">
 <dl>
 <dt>All Superinterfaces:</dt>
-<dd><code>org.springframework.data.repository.CrudRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code>, <code>org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code>, <code>org.springframework.data.repository.PagingAndSortingRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code>, <code>org.springframework.data.repository.query.QueryByExampleExecutor&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code>, <code>org.springframework.data.repository.Repository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code></dd>
+<dd><code>org.springframework.data.repository.CrudRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code>, <code>org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code>, <code>org.springframework.data.repository.PagingAndSortingRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code>, <code>org.springframework.data.repository.query.QueryByExampleExecutor&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code>, <code>org.springframework.data.repository.Repository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">ICertificateRepository</span>
-extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</pre>
+extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>,&#8203;java.lang.Long&gt;</pre>
 <div class="block">Interface that define the available operations to DB.</div>
 <dl>
 <dt><span class="simpleTagLabel">Since:</span></dt>
@@ -156,7 +156,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByAttendant(java.lang.String,org.springframework.data.domain.Pageable)">findByAttendant</a></span>&#8203;(java.lang.String&nbsp;attendant,
                org.springframework.data.domain.Pageable&nbsp;page)</code></th>
 <td class="colLast">
@@ -164,7 +164,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByInstitution(java.lang.String,org.springframework.data.domain.Pageable)">findByInstitution</a></span>&#8203;(java.lang.String&nbsp;institution,
                  org.springframework.data.domain.Pageable&nbsp;page)</code></th>
 <td class="colLast">
@@ -172,14 +172,14 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a></code></td>
+<td class="colFirst"><code><a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByNumber(int)">findByNumber</a></span>&#8203;(int&nbsp;number)</code></th>
 <td class="colLast">
 <div class="block">Function to find a Certificate by number.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>java.util.List&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByNumberBetween(int,int)">findByNumberBetween</a></span>&#8203;(int&nbsp;startNumber,
                    int&nbsp;endNumber)</code></th>
 <td class="colLast">
@@ -187,7 +187,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i4" class="altColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByState(co.gov.ids.stationerycontrol.certificate.domain.CertificateState,org.springframework.data.domain.Pageable)">findByState</a></span>&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
            org.springframework.data.domain.Pageable&nbsp;page)</code></th>
 <td class="colLast">
@@ -195,7 +195,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i5" class="rowColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByStateAndAttendant(co.gov.ids.stationerycontrol.certificate.domain.CertificateState,java.lang.String,org.springframework.data.domain.Pageable)">findByStateAndAttendant</a></span>&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
                        java.lang.String&nbsp;attendant,
                        org.springframework.data.domain.Pageable&nbsp;page)</code></th>
@@ -204,7 +204,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i6" class="altColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByStateAndInstitution(co.gov.ids.stationerycontrol.certificate.domain.CertificateState,java.lang.String,org.springframework.data.domain.Pageable)">findByStateAndInstitution</a></span>&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
                          java.lang.String&nbsp;institution,
                          org.springframework.data.domain.Pageable&nbsp;page)</code></th>
@@ -213,7 +213,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i7" class="rowColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByTownship(java.lang.String,org.springframework.data.domain.Pageable)">findByTownship</a></span>&#8203;(java.lang.String&nbsp;township,
               org.springframework.data.domain.Pageable&nbsp;page)</code></th>
 <td class="colLast">
@@ -221,7 +221,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i8" class="altColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByType(co.gov.ids.stationerycontrol.certificate.domain.CertificateType,org.springframework.data.domain.Pageable)">findByType</a></span>&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
           org.springframework.data.domain.Pageable&nbsp;page)</code></th>
 <td class="colLast">
@@ -229,7 +229,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByTypeAndAttendant(co.gov.ids.stationerycontrol.certificate.domain.CertificateType,java.lang.String,org.springframework.data.domain.Pageable)">findByTypeAndAttendant</a></span>&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
                       java.lang.String&nbsp;attendant,
                       org.springframework.data.domain.Pageable&nbsp;page)</code></th>
@@ -238,7 +238,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 </td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;</code></td>
+<td class="colFirst"><code>org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#findByTypeAndInstitution(co.gov.ids.stationerycontrol.certificate.domain.CertificateType,java.lang.String,org.springframework.data.domain.Pageable)">findByTypeAndInstitution</a></span>&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
                         java.lang.String&nbsp;institution,
                         org.springframework.data.domain.Pageable&nbsp;page)</code></th>
@@ -297,7 +297,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByNumber</h4>
-<pre class="methodSignature"><a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&nbsp;findByNumber&#8203;(int&nbsp;number)</pre>
+<pre class="methodSignature"><a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&nbsp;findByNumber&#8203;(int&nbsp;number)</pre>
 <div class="block">Function to find a Certificate by number.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -313,7 +313,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByNumberBetween</h4>
-<pre class="methodSignature">java.util.List&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByNumberBetween&#8203;(int&nbsp;startNumber,
+<pre class="methodSignature">java.util.List&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByNumberBetween&#8203;(int&nbsp;startNumber,
                                                       int&nbsp;endNumber)</pre>
 <div class="block">Function to list Certificates by startNumber and endNumber.</div>
 <dl>
@@ -331,7 +331,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByType</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByType&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByType&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
                                                                    org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by Type of Certificate.</div>
 <dl>
@@ -349,7 +349,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByTypeAndAttendant</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByTypeAndAttendant&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByTypeAndAttendant&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
                                                                                java.lang.String&nbsp;attendant,
                                                                                org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by Type and Attendant.</div>
@@ -369,7 +369,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByTypeAndInstitution</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByTypeAndInstitution&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByTypeAndInstitution&#8203;(<a href="../../../domain/CertificateType.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateType</a>&nbsp;type,
                                                                                  java.lang.String&nbsp;institution,
                                                                                  org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by Institution and Type.</div>
@@ -389,7 +389,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByState</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByState&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByState&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
                                                                     org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by State.</div>
 <dl>
@@ -407,7 +407,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByStateAndAttendant</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByStateAndAttendant&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByStateAndAttendant&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
                                                                                 java.lang.String&nbsp;attendant,
                                                                                 org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by State and Attendant.</div>
@@ -427,7 +427,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByStateAndInstitution</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByStateAndInstitution&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByStateAndInstitution&#8203;(<a href="../../../domain/CertificateState.html" title="enum in co.gov.ids.stationerycontrol.certificate.domain">CertificateState</a>&nbsp;state,
                                                                                   java.lang.String&nbsp;institution,
                                                                                   org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by Institution and State.</div>
@@ -447,7 +447,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByAttendant</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByAttendant&#8203;(java.lang.String&nbsp;attendant,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByAttendant&#8203;(java.lang.String&nbsp;attendant,
                                                                         org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by Attendant.</div>
 <dl>
@@ -465,7 +465,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockList">
 <li class="blockList">
 <h4>findByTownship</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByTownship&#8203;(java.lang.String&nbsp;township,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByTownship&#8203;(java.lang.String&nbsp;township,
                                                                        org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by township.</div>
 <dl>
@@ -483,7 +483,7 @@ extends org.springframework.data.jpa.repository.JpaRepository&lt;<a href="../ent
 <ul class="blockListLast">
 <li class="blockList">
 <h4>findByInstitution</h4>
-<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.framework.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByInstitution&#8203;(java.lang.String&nbsp;institution,
+<pre class="methodSignature">org.springframework.data.domain.Page&lt;<a href="../entities/CertificateEntity.html" title="class in co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities">CertificateEntity</a>&gt;&nbsp;findByInstitution&#8203;(java.lang.String&nbsp;institution,
                                                                           org.springframework.data.domain.Pageable&nbsp;page)</pre>
 <div class="block">Function to list Certificates by Institution.</div>
 <dl>

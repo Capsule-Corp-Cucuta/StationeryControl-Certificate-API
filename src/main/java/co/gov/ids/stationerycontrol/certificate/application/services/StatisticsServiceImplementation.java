@@ -2,10 +2,11 @@ package co.gov.ids.stationerycontrol.certificate.application.services;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import co.gov.ids.stationerycontrol.certificate.domain.CertificateType;
 import co.gov.ids.stationerycontrol.certificate.domain.CertificateState;
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.BadRequestException;
-import co.gov.ids.stationerycontrol.certificate.framework.persistence.repositories.IStatisticsRepository;
+import co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.repositories.IStatisticsRepository;
 
 /**
  * Class that implements IStatisticsService.

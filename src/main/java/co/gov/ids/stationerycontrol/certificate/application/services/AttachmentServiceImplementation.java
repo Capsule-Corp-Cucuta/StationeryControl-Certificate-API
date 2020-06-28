@@ -11,11 +11,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.transaction.annotation.Transactional;
+
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.FileException;
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.NotFoundException;
 import co.gov.ids.stationerycontrol.certificate.application.exceptions.BadRequestException;
-import co.gov.ids.stationerycontrol.certificate.framework.persistence.entities.CertificateEntity;
-import co.gov.ids.stationerycontrol.certificate.framework.persistence.repositories.ICertificateRepository;
+import co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.entities.CertificateEntity;
+import co.gov.ids.stationerycontrol.certificate.infraestructure.persistence.repositories.ICertificateRepository;
 
 /**
  * Class that implements ICertificateService.

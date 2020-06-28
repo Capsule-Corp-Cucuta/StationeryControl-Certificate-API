@@ -1,6 +1,7 @@
 package co.gov.ids.stationerycontrol.certificate.application.services;
 
 import java.util.List;
+
 import co.gov.ids.stationerycontrol.certificate.domain.Certificate;
 import co.gov.ids.stationerycontrol.certificate.domain.CertificateType;
 import co.gov.ids.stationerycontrol.certificate.domain.CertificateState;
