@@ -69,7 +69,7 @@ public class CertificateController {
             if (usersResponse.getStatusCodeValue() == 200 && number == certificate.getNumber()) {
                 return new ResponseEntity<>(service.update(
                         certificate,
-                        usersResponse.getBody().getId(),
+                        usersResponse.getBody().getUsername(),
                         usersResponse.getBody().getTownship(),
                         usersResponse.getBody().getInstitution()
                 ), HttpStatus.OK);
@@ -94,7 +94,7 @@ public class CertificateController {
                     service.updateMultipleCertificate(
                             startNumber,
                             endNumber,
-                            usersResponse.getBody().getId(),
+                            usersResponse.getBody().getUsername(),
                             usersResponse.getBody().getTownship(),
                             usersResponse.getBody().getInstitution()
                     ),

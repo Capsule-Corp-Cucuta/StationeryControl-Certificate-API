@@ -7,6 +7,7 @@ import java.time.LocalDate;
 public class Certificate {
 
     private int number;
+    private byte verificationCode;
     private String department;
     private String township;
     private String institution;

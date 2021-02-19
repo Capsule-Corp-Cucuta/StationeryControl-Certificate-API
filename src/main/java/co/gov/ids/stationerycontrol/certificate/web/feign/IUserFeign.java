@@ -9,7 +9,7 @@ import co.gov.ids.stationerycontrol.certificate.domain.dto.User;
 @FeignClient(name = "STATIONERYCONTROL-USER-API")
 public interface IUserFeign {
 
-    @GetMapping("/api/user/{identification}")
-    public ResponseEntity<User> findByIdentification(@PathVariable("identification") String identification);
+    @GetMapping("/api/user/{username}")
+    public ResponseEntity<User> findByIdentification(@PathVariable("username") String username);
 
 }

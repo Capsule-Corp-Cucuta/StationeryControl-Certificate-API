@@ -3,6 +3,7 @@ package co.gov.ids.stationerycontrol.certificate.persistence.entities;
 import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
+import org.hibernate.validator.constraints.Range;
 import co.gov.ids.stationerycontrol.certificate.domain.dto.CertificateType;
 import co.gov.ids.stationerycontrol.certificate.domain.dto.CertificateState;
 
@@ -12,7 +13,11 @@ import co.gov.ids.stationerycontrol.certificate.domain.dto.CertificateState;
 public class CertificateEntity {
 
     @Id
+    @Range(min = 10000000, max = 99999999)
     private Integer number;
+
+    @Column(nullable = false)
+    private Byte verificationCode;
 
     @Column(nullable = false)
     private String department;

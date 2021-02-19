@@ -10,6 +10,7 @@ public interface CertificateMapper {
 
     @Mappings({
             @Mapping(source = "number", target = "number"),
+            @Mapping(source = "verificationCode", target = "verificationCode"),
             @Mapping(source = "department", target = "department"),
             @Mapping(source = "township", target = "township"),
             @Mapping(source = "institution", target = "institution"),
